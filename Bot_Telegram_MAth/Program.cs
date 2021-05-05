@@ -26,7 +26,7 @@ namespace Bot_Telegram_MAth
                 botClient.OnMessage += Hook_OnMessage;
                 botClient.StartReceiving();
                 Console.WriteLine("Stop");
-                Console.ReadKey();
+                Console.Read();
                 botClient.StopReceiving();
             }
             catch (Exception e)
