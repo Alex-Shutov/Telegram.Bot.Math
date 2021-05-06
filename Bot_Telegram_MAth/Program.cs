@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Args;
@@ -10,7 +11,7 @@ namespace Bot_Telegram_MAth
     
     class Program
     {
-        public const string TOKEN = "1762733967:AAE6K3a89jQBypsboN9vJL834L1cZ7QJfBU";
+        public static readonly string TOKEN = ParseToken.ParseFromTxt();
         private static readonly ITelegramBotClient botClient = new TelegramBotClient(TOKEN);
         static void Main(string[] args)
         {
@@ -25,10 +26,10 @@ namespace Bot_Telegram_MAth
                 Console.WriteLine("Start");
                 botClient.OnMessage += Hook_OnMessage;
                 botClient.StartReceiving();
-                
-                Console.Read();
-                Console.WriteLine("Stop");
-                botClient.StopReceiving();
+                Thread.Sleep(int.MaxValue);
+                //Console.Read();
+                //Console.WriteLine("Stop");
+                //botClient.StopReceiving();
             }
             catch (Exception e)
             {
